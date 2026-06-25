@@ -86,7 +86,7 @@ app.delete("/api/notes/:id", (request, response) => {
   response.status(204).end();
 });
 
-app.get("*", (request, response) => {
+app.get("/{*path}", (request, response) => {
   response.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
