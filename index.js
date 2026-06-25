@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 
 let notes = [
@@ -83,6 +84,10 @@ app.delete("/api/notes/:id", (request, response) => {
   notes = notes.filter((note) => note.id !== id);
 
   response.status(204).end();
+});
+
+app.get("*", (request, response) => {
+  response.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 const unknownEndpoint = (request, response) => {
